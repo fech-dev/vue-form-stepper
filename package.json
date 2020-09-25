@@ -2,7 +2,7 @@
   "name": "vue-form-stepper",
   "version": "1.0.0",
   "description": "Simple stepper form Vue component",
-  "main": "src/index.js",
+  "main": "src/VueFormStepper.js",
   "repository": "https://github.com/fech-dev/vue-form-stepper.git",
   "author": "Federico Mameli",
   "license": "MIT",
