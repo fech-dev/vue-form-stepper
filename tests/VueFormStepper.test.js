@@ -37,8 +37,19 @@ describe('VueFormStepper', () => {
 		expect(wrapper.vm.currentStep).toBe(3)
 		wrapper.vm.currentStep = 1
 	})
+
+	it('shows the second element', async () => {
+		await wrapper.vm.next()
+		const sections = wrapper.findAll('section, div')
+		
+		expect(sections.at(0).isVisible()).toBe(false)
+		expect(sections.at(1).isVisible()).toBe(true)
+		expect(sections.at(2).isVisible()).toBe(false)
+		expect(sections.at(3).isVisible()).toBe(false)
+	})
   
 	it('not increment currentStep if currentStep is equal steps and emits a subimit event', async () => {
+		wrapper.vm.currentStep = 1
 		await wrapper.vm.next()
 		expect(wrapper.vm.currentStep).toBe(2)
 		await wrapper.vm.next()
@@ -134,3 +145,5 @@ describe('VueFormStepper', () => {
 		expect(parent.vm.formCurrentStep).toBe(1)
 	})
 })
+
+test.todo('add support for transition-group')

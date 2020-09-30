@@ -96,7 +96,22 @@ export default {
 			return
 		}
 
-		formContent.push(...defaultSlotChildren.map((el, index) => this.currentStep === (index + 1) ? el : h()))
+		// formContent.push(...defaultSlotChildren.map((el, index) => this.currentStep === (index + 1) ? el : h()))
+		formContent.push(...defaultSlotChildren.map((vNode, index) => {
+			const vNodeData = vNode.data || {}
+			const  el = h(vNode.tag, 
+				{ 
+					...vNodeData,
+					style: { 
+						...vNodeData.style,
+						display: this.currentStep === (index + 1) ? 'block' : 'none'
+					}
+				},
+				vNode.children
+			)
+
+			return el 
+		}))
 
 		if(this.$scopedSlots.controls){
 			const controlsSections = h('section', {
@@ -115,6 +130,7 @@ export default {
 				}
 			}
 		}, formContent)
-	}
+	},
+
 
 }
