@@ -57,8 +57,9 @@ describe('VueFormStepper', () => {
 		await wrapper.vm.next()
 		expect(wrapper.vm.currentStep).toBe(4)
 		await wrapper.vm.next()
-		expect(wrapper.vm.currentStep).toBe(4)
 		expect(wrapper.emitted().submit.length).toBe(1)
+		
+		
 	})
 
 	it('sets previous step when \'prev()\' method is called', () => {

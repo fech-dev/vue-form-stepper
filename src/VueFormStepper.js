@@ -62,22 +62,20 @@ export default {
 		},
 
 		async next(){
-			/**
-			 * cs steps
-			 * 1  4
-			 * 2  4
-			 * 3  4
-			 * 4  4
-			 */
+	
 			let middlewarePass = await this.executeMiddleware()
+		
+			if((this.currentStep <= this.steps) && middlewarePass){
+				if(this.currentStep !== this.steps) {
+					this.currentStep += 1
+					this.$emit('change', this.currentStep)
+				}
+				else{
+					this.$emit('submit')
+				}
+			}
 
-			if((this.currentStep < this.steps) && middlewarePass){
-				this.currentStep += 1
-				this.$emit('change', this.currentStep)
-			}
-			else {
-				this.$emit('submit')
-			}
+			
 		}
 	},
 
