@@ -104,7 +104,7 @@ export default {
 					...vNodeData,
 					style: { 
 						...vNodeData.style,
-						display: this.currentStep === (index + 1) ? 'block' : 'none'
+						display: this.currentStep === (index + 1) ? null : 'none'
 					}
 				},
 				vNode.children
